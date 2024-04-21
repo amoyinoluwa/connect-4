@@ -7,5 +7,8 @@ public class GameDetailsRequest {
         this.gameId = gameId;
 
     }
+    public int getGameId() {
+        return gameId;
+    }
     
 }
