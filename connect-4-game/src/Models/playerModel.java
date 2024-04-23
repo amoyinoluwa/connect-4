@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import DataAccess.PlayerDataAccess;
 import DataObject.PlayerDataObject;
 import DomainObjects.PlayerDomainObject;
+import java.util.regex.Pattern;
 
 public class PlayerModel {
     public static ArrayList<PlayerDomainObject> GetAllPlayers() {
@@ -16,17 +17,31 @@ public class PlayerModel {
         return playersToReturn;
     }
 
-    public PlayerDomainObject AddPlayer(PlayerDomainObject player) throws Exception {
+    public static PlayerDomainObject RegisterPlayer(PlayerDomainObject player) throws Exception {
         validate(player);
         PlayerDataObject playerToAdd = new PlayerDataObject(player);
         PlayerDataAccess.AddPlayer(playerToAdd);
         return new PlayerDomainObject(playerToAdd);
     }
 
-    private void validate(PlayerDomainObject playerDomainObject) throws Exception {
-        String pUsername =  playerDomainObject.getPlayerUsername();
+    private static void validate(PlayerDomainObject playerDomainObject) throws Exception {
+        String pUsername =  playerDomainObject.getUsername();
+        String pPassword = playerDomainObject.getPassword();
+
         if (pUsername.length() < 6 || pUsername.length() > 20) {
-            throw new Exception("Invalid username");
+            throw new Exception("Invalid Username");
+        }
+
+        if (pPassword.length() < 6 || pPassword.length() > 20) {
+            throw new Exception("Invalid Password");
+        }
+
+        if (!Pattern.matches("^[a-zA-Z0-9]+", pPassword)) {
+            throw new Exception("Invalid Password");
+        }
+
+        if (!Pattern.matches("^[a-zA-Z0-9]+", pUsername)) {
+            throw new Exception("Invalid Username");
         }
 
     }

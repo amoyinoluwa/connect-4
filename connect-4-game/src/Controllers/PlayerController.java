@@ -1,23 +1,24 @@
-package Controller;
+package Controllers;
 
-import java.util.ArrayList;
-
+import DomainObjects.PlayerDomainObject;
+import Models.PlayerModel;
 import restService.request.RegisterPlayerRequest;
-import restService.response.PlayerResponse;
+import restService.response.RegisterPlayerResponse;
 
 
 public class PlayerController {
    
     
-    public static PlayerResponse registerPlayer(RegisterPlayerRequest request){
+    public RegisterPlayerResponse registerPlayer(RegisterPlayerRequest request){
 
         try{
-            //clearly this will cause errors!
-            return new PlayerResponse();
+            PlayerDomainObject domainObject = new PlayerDomainObject(request.getUsername(), request.getPassword());
+            PlayerDomainObject domainCreated = PlayerModel.RegisterPlayer(domainObject);
+            return new RegisterPlayerResponse(domainCreated);
 
         } catch (Exception ex) {
 
-            PlayerResponse response = new PlayerResponse();
+            RegisterPlayerResponse response = new RegisterPlayerResponse(ex.getMessage());
             return response;
         }
     }

@@ -17,10 +17,10 @@ public class GameDetailsResponse {
     // }
 
     public GameDetailsResponse(GameDomainObject gDomainObject) {
+        this.errorMessage = null;
         this.gameId =  gDomainObject.GetGameId();
         this.playerOneId = gDomainObject.GetPlayerOne().getPlayerId();
         this.playerTwoId = gDomainObject.GetPlayerTwo().getPlayerId();
-        this.errorMessage = null;
     }
     // public boolean getRequestStatus() {
     //     return this.requestStatus;

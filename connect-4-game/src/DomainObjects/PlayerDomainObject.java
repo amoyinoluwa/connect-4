@@ -5,28 +5,28 @@ import DataObject.PlayerDataObject;
 public class PlayerDomainObject {
     private int playerId;
     private String username;
-    // private int gameId;
+    private String password;
 
-    public PlayerDomainObject(int playerId, String username, int gameId) {
-        this.playerId = playerId;
-        // this.gameId = gameId;
+    public PlayerDomainObject(String username, String password) {
         this.username = username;
+        this.password = password;
     }
 
     public PlayerDomainObject(PlayerDataObject pObject) {
         this.playerId = pObject.playerId;
         this.username = pObject.username;
+        this.password = pObject.password;
     }
 
     public int getPlayerId() {
         return this.playerId;
     }
 
-    // public int getGameId() {
-    //     return this.gameId;
-    // }
+    public String getPassword() {
+        return this.password;
+    }
 
-    public String getPlayerUsername() {
+    public String getUsername() {
         return this.username;
     }
 }
