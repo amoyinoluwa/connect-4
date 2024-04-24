@@ -162,8 +162,3 @@ public class PlayerRegistrationTest {
         assertNull(response.getUsername());
     }
 }
-
-
-// Now, with these eight test scenarios added to the PlayerRegistrationTest class, you can run the JUnit tests to validate the registerPlayer method against the provided test scenarios.
-
-// All eight tests should pass if the implementation of the PlayerRegistration class is correct.

@@ -2,7 +2,7 @@ package restService.response;
 
 import DomainObjects.GameDomainObject;
 
-public class GameDetailsResponse {
+public class CreateGameResponse {
     private final String errorMessage;
     private final int gameId;
     private final int playerOneId;
@@ -14,9 +14,8 @@ public class GameDetailsResponse {
     private final int winner;
     private final int currentTurnPlayer;
     private final String board;
-
-
-    public GameDetailsResponse(GameDomainObject object) {
+    
+    public CreateGameResponse(GameDomainObject object) {
         this.errorMessage = null;
         this.success = true;
         this.gameId =  object.GetGameId();
@@ -30,7 +29,7 @@ public class GameDetailsResponse {
         this.board = object.GetGameBoard();
     }
 
-    public GameDetailsResponse(String errMsg) {
+    public CreateGameResponse(String errMsg) {
         this.errorMessage = errMsg;
         this.gameId = -1;
         this.playerOneId = -1;

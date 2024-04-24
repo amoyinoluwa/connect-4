@@ -14,8 +14,8 @@ public class PlayerDataAccess {
     }
 
     private void initialize() {
-        players.add(new PlayerDataObject(getNextId(), "joseph", "joseph"));
-        players.add(new PlayerDataObject(getNextId(), "dare", "dare"));
+        players.add(new PlayerDataObject(1, "joseph", "joseph"));
+        players.add(new PlayerDataObject(2, "dare", "dare"));
     }
 
     private static int getNextId() {
@@ -35,6 +35,15 @@ public class PlayerDataAccess {
     public static PlayerDataObject AddPlayer(PlayerDataObject player) {
         players.add(player);
         return player;
+    }
+
+    public static PlayerDataObject GetPlayerById(int id) {
+        for (PlayerDataObject player: players) {
+            if (player.getPlayerId() == id) {
+                return new PlayerDataObject(player);
+            }
+        }
+        return null;
     }
 
 }

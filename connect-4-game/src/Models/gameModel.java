@@ -21,7 +21,7 @@ public class GameModel {
     //     }
     //     return true;
     // }
-    public GameDomainObject AddGame(GameDomainObject game) {
+    public static GameDomainObject AddGame(GameDomainObject game) {
         GameDataObject gameToAdd = new GameDataObject(game);
         GameDataAccess.AddGame(gameToAdd);
         return new GameDomainObject(gameToAdd);
@@ -30,7 +30,7 @@ public class GameModel {
     public static GameDomainObject GetGameByGameId(int gameId) throws Exception {
         GameDataObject gameRetrieved = GameDataAccess.GetGameByGameId(gameId);
         if (gameRetrieved == null) {
-            throw new Exception("Game ID does not exist");
+            throw new Exception("Invalid GameId");
         }
         return new GameDomainObject(gameRetrieved);
     }

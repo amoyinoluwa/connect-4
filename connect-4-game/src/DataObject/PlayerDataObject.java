@@ -24,4 +24,16 @@ public PlayerDataObject(PlayerDataObject pDataObject) {
     this.username = pDataObject.username;
     this.password = pDataObject.password;
 }
+
+public int getPlayerId() {
+    return this.playerId;
+}
+
+public String getUsername() {
+    return this.username;
+}
+
+public String getPassword() {
+    return this.password;
+}
 }

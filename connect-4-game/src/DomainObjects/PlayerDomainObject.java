@@ -7,7 +7,8 @@ public class PlayerDomainObject {
     private String username;
     private String password;
 
-    public PlayerDomainObject(String username, String password) {
+    public PlayerDomainObject(int id, String username, String password) {
+        this.playerId = id;
         this.username = username;
         this.password = password;
     }

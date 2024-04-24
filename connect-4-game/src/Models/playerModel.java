@@ -24,6 +24,15 @@ public class PlayerModel {
         return new PlayerDomainObject(playerToAdd);
     }
 
+    public static PlayerDomainObject GetPlayerById(int playerId) throws Exception {
+        PlayerDataObject playerToRetrieve = PlayerDataAccess.GetPlayerById(playerId);
+        String error = String.format("Player Id %d does not exist", playerId);
+        if (playerToRetrieve == null) {
+            throw new Exception(error);
+        }
+        return new PlayerDomainObject(playerToRetrieve);
+    }
+
     private static void validate(PlayerDomainObject playerDomainObject) throws Exception {
         String pUsername =  playerDomainObject.getUsername();
         String pPassword = playerDomainObject.getPassword();
