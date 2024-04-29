@@ -6,8 +6,10 @@ import Models.GameModel;
 import Models.PlayerModel;
 import restService.request.CreateGameRequest;
 import restService.request.GameDetailsRequest;
+import restService.request.PlayGameRequest;
 import restService.response.CreateGameResponse;
 import restService.response.GameDetailsResponse;
+import restService.response.PlayGameResponse;
 
 public class GameController {
     public GameDetailsResponse GetGameDetails(GameDetailsRequest request) {
@@ -23,11 +25,21 @@ public class GameController {
         try {
             PlayerDomainObject player1 = PlayerModel.GetPlayerById(request.getPlayer1Id());
             PlayerDomainObject player2 = PlayerModel.GetPlayerById(request.getPlayer2Id());
-            GameDomainObject gameObject = new GameDomainObject(request.getGameId(), player1, player2, "Playing", "");
+            GameDomainObject gameObject = new GameDomainObject(request.getGameId(), player1, player2);
             GameDomainObject gameToReturn  = GameModel.AddGame(gameObject);
             return new CreateGameResponse(gameToReturn);
         } catch (Exception ex) {
             return new CreateGameResponse(ex.getMessage());
+        }
+    }
+
+    public PlayGameResponse PlayGame(PlayGameRequest request) {
+        try {
+            GameModel model = new GameModel();
+            GameDomainObject gameToReturn = model.makeMove(request.getGameId(), request.getPlayerId(), request.getColumn());
+            return new PlayGameResponse(gameToReturn);
+        } catch (Exception ex) {
+            return new PlayGameResponse(ex.getMessage());
         }
     }
 }

@@ -10,9 +10,9 @@ public class GameDataAccess {
     //     nextId++;
     //     return thisId; 
     // }
-
     private static ArrayList<GameDataObject> games = new ArrayList<GameDataObject>();
 
+    public void initialize() {}
     public static GameDataObject AddGame(GameDataObject game) {
         games.add(game);
         return game;

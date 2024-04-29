@@ -7,11 +7,6 @@ import org.junit.Test;
 
 import Controllers.GameController;
 import DataAccess.PlayerDataAccess;
-import DataObject.PlayerDataObject;
-import DomainObjects.GameDomainObject;
-import DomainObjects.PlayerDomainObject;
-import Models.GameModel;
-import Models.PlayerModel;
 import restService.request.CreateGameRequest;
 import restService.response.CreateGameResponse;
 public class CreateGameTest
@@ -47,7 +42,7 @@ public class CreateGameTest
         assertEquals("dare", response.getPlayer2Username());
         assertTrue(response.getCurrentTurnPlayer() == 1 || response.getCurrentTurnPlayer() == 2);
         assertEquals("Playing", response.getGameStatus());
-        assertEquals("", response.getBoard());
+        assertEquals("000000000000000000000000000000000000000000", response.getBoard());
     }
 
 

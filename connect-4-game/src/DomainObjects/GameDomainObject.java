@@ -1,8 +1,6 @@
 package DomainObjects;
 
 import DataObject.GameDataObject;
-import Models.PlayerModel;
-import restService.request.CreateGameRequest;
 
 public class GameDomainObject {
     private int gameId;
@@ -12,15 +10,16 @@ public class GameDomainObject {
     private int winner;
     private String status;
     // private BoardDomainObject gameBoard;
+    private final String TOKEN = "0";
     private String gameBoard;
 
-    public GameDomainObject(int gameId, PlayerDomainObject player1, PlayerDomainObject player2, String status, String board) {
+    public GameDomainObject(int gameId, PlayerDomainObject player1, PlayerDomainObject player2) {
         this.gameId = gameId;
         this.player1 = player1;
         this.player2 = player2;
         this.currentTurnPlayer = player1.getPlayerId(); //player1 will always start
-        this.status = status;
-        this.gameBoard = board;
+        this.status = "Playing";
+        this.gameBoard = TOKEN.repeat(42);
         this.winner = -1;
     }
 
@@ -37,11 +36,11 @@ public class GameDomainObject {
     public GameDomainObject(GameDataObject gDataObject) {
         this.player1 = new PlayerDomainObject(gDataObject.player1);
         this.player2 = new PlayerDomainObject(gDataObject.player2);
-        this.gameId = gDataObject.getGameId();
-        this.winner = gDataObject.getWinner();
-        this.currentTurnPlayer = gDataObject.getCurrentTurnPlayer();
-        this.status = gDataObject.getStatus();
-        this.gameBoard = gDataObject.getBoard();
+        this.gameId = gDataObject.GetGameId();
+        this.winner = gDataObject.GetWinner();
+        this.currentTurnPlayer = gDataObject.GetCurrentTurnPlayer();
+        this.status = gDataObject.GetGameStatus();
+        this.gameBoard = gDataObject.GetGameBoard();
     }
 
     public PlayerDomainObject GetPlayerOne() {
@@ -56,16 +55,32 @@ public class GameDomainObject {
         return this.currentTurnPlayer;
     }
 
+    public void setCurrentTurnPlayer(int playerToSet) {
+        this.currentTurnPlayer = playerToSet; 
+    }
+
     public String GetGameBoard() {
         return this.gameBoard;
+    }
+
+    public void setGameBoard(String boardToSet) {
+        this.gameBoard = boardToSet;
     }
 
     public int GetWinner() {
         return this.winner;
     }
 
+    public void setWinner(int winnerId) {
+        this.winner = winnerId;
+    }
+
     public String GetGameStatus() {
         return this.status;
+    }
+
+    public void setGameStatus(String status) {
+        this.status = status;
     }
 
     public int GetGameId() {

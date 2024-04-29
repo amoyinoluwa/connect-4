@@ -1,6 +1,7 @@
 package DataObject;
 
 import DomainObjects.GameDomainObject;
+import DomainObjects.PlayerDomainObject;
 
 public class GameDataObject {
 
@@ -41,24 +42,48 @@ public class GameDataObject {
         this.status = object.status;
     }
 
-    public int getWinner() {
-        return this.winner;
+    public PlayerDataObject GetPlayerOne() {
+        return this.player1;
     }
 
-    public int getGameId() {
-        return this.gameId;
+    public PlayerDataObject GetPlayerTwo() {
+        return this.player2;
     }
 
-    public int getCurrentTurnPlayer() {
+    public int GetCurrentTurnPlayer() {
         return this.currentTurnPlayer;
     }
 
-    public String getStatus() {
+    public void setCurrentTurnPlayer(int playerToSet) {
+        this.currentTurnPlayer = playerToSet; 
+    }
+
+    public String GetGameBoard() {
+        return this.board;
+    }
+
+    public void setGameBoard(String boardToSet) {
+        this.board = boardToSet;
+    }
+
+    public int GetWinner() {
+        return this.winner;
+    }
+
+    public void setWinner(int winnerId) {
+        this.winner = winnerId;
+    }
+
+    public String GetGameStatus() {
         return this.status;
     }
 
-    public String getBoard() {
-        return this.board;
+    public void setGameStatus(String status) {
+        this.status = status;
+    }
+
+    public int GetGameId() {
+        return this.gameId;
     }
 }
  

@@ -27,9 +27,9 @@ public class GameDetailsTest {
         PlayerDomainObject player5 = new PlayerDomainObject(5, "Otedola", "Yellow");
         PlayerDomainObject player6 = new PlayerDomainObject(6, "Dangote", "Red");
        
-        GameDomainObject game1 = new GameDomainObject(1, player1, player2,"Playing", "0000000000000000000000000");
-        GameDomainObject game2 = new GameDomainObject(2, player3, player4, "Completed", "0011220011220011220011220");
-        GameDomainObject game3 = new GameDomainObject(3, player5, player6, "Completed", "0101010101010101010101010");
+        GameDomainObject game1 = new GameDomainObject(1, player1, player2);
+        GameDomainObject game2 = new GameDomainObject(2, player3, player4);
+        GameDomainObject game3 = new GameDomainObject(3, player5, player6);
        
         GameModel.AddGame(game1);
         GameModel.AddGame(game2);
@@ -50,7 +50,7 @@ public class GameDetailsTest {
         assertEquals(1, response.getCurrentTurnPlayer());
         assertEquals("Playing", response.getGameStatus());
         // assertEquals(-1, response.getWinner()); 
-        assertEquals("0000000000000000000000000", response.getBoard());
+        assertEquals("000000000000000000000000000000000000000000", response.getBoard());
     }
 
 
@@ -65,9 +65,9 @@ public class GameDetailsTest {
         assertEquals("DapoAbiodun", response.getPlayer1Username());
         assertEquals("TeamLagos", response.getPlayer2Username());
         assertEquals(3, response.getCurrentTurnPlayer());
-        assertEquals("Completed", response.getGameStatus());
+        assertEquals("Playing", response.getGameStatus());
         // assertEquals(-1, response.getWinner());
-        assertEquals("0011220011220011220011220", response.getBoard());
+        assertEquals("000000000000000000000000000000000000000000", response.getBoard());
     }
 
 
@@ -82,9 +82,9 @@ public class GameDetailsTest {
         assertEquals("Otedola", response.getPlayer1Username());
         assertEquals("Dangote", response.getPlayer2Username());
         assertEquals(5, response.getCurrentTurnPlayer());
-        assertEquals("Completed", response.getGameStatus());
+        assertEquals("Playing", response.getGameStatus());
         // assertEquals(-1, response.getWinner());
-        assertEquals("0101010101010101010101010", response.getBoard());
+        assertEquals("000000000000000000000000000000000000000000", response.getBoard());
     }
 
 

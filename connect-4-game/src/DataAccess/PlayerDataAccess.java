@@ -3,7 +3,6 @@ package DataAccess;
 import java.util.ArrayList;
 
 import DataObject.PlayerDataObject;
-import DomainObjects.PlayerDomainObject;
 
 public class PlayerDataAccess {
     private static ArrayList<PlayerDataObject> players = new ArrayList<PlayerDataObject>();
